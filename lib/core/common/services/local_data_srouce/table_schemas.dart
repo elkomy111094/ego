@@ -1,0 +1,101 @@
+final Map<String, String> tableSchemas = {
+  'symbols': '''
+CREATE TABLE symbols (
+    symbolId TEXT PRIMARY KEY,
+    name TEXT,
+    isin TEXT,
+    imageUri TEXT,
+    unit TEXT,
+    source TEXT,
+    color TEXT,
+    baseCurrency TEXT,
+    quoteCurrency TEXT,
+    conversionType TEXT,
+    conversionSymbolId TEXT,
+    createdAt INTEGER, 
+    updatedAt INTEGER,  
+    description TEXT,
+    exchange TEXT,
+    spread REAL,
+    minimalSpread REAL,
+    maximalSpread REAL,
+    spreadBalance REAL,
+    digits INTEGER,
+    contractSize REAL,
+    sector TEXT,
+    status TEXT,
+    calculationType TEXT,
+    tradeLevel TEXT,
+    filling TEXT,
+    enabledOrderTypes TEXT,
+    enabledExpirationTypes TEXT,
+    stopLevel REAL,
+    minVolume REAL,
+    maxVolume REAL,
+    volumeStep REAL,
+    totalVolumeCap REAL,
+    minHoldTimeBeforeClose REAL,
+    execution TEXT,
+    initialMargin REAL,
+    maintenanceMargin REAL,
+    hedgedMargin REAL,
+    marginLargerLeg INTEGER,
+    initialMarginBuyRate REAL,
+    initialMarginSellRate REAL,
+    maintenanceMarginBuyRate REAL,
+    maintenanceMarginSellRate REAL,
+    swapType TEXT,
+    daysInYear INTEGER,
+    swapLong REAL,
+    swapShort REAL,
+    swapMultiplierSunday REAL,
+    swapMultiplierMonday REAL,
+    swapMultiplierTuesday REAL,
+    swapMultiplierWednesday REAL,
+    swapMultiplierThursday REAL,
+    swapMultiplierFriday REAL,
+    swapMultiplierSaturday REAL,
+    tradingExpiryStart INTEGER,
+    tradingExpiryEnd INTEGER,
+    stopTradingAfterSeconds REAL,
+    lastQuoteTime INTEGER,
+    symbolGroupId TEXT,
+    bid REAL,
+    ask REAL,
+    high REAL,
+    low REAL,
+    volume REAL,
+    dailyChange REAL,
+    tickValue REAL,
+    settlementPrice REAL,
+    bidHigh REAL,
+    bidLow REAL,
+    askHigh REAL,
+    askLow REAL,
+    lastHigh REAL,
+    lastLow REAL,
+    volumeHigh REAL,
+    volumeLow REAL,
+    openPrice REAL,
+    closePrice REAL
+);
+
+'''
+};
+
+/*
+  'tabelName': '''
+      CREATE TABLE tabelName (
+        col1Name dataType PRIMARY KEY cons,
+        col2Name dataType cons,
+      )
+    ''',
+  'users': '''
+      CREATE TABLE users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT NOT NULL,
+        email TEXT NOT NULL UNIQUE
+      )
+    ''',
+
+*/
