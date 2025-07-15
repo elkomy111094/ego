@@ -49,16 +49,29 @@ void main() async {
 }
 */
 
-
-
-import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:logger/logger.dart';
 import 'package:timezone/data/latest.dart' as tz;
+
 import 'core/notifications/notification_manager.dart';
 import 'core/notifications/widgets/notification_inbox.dart';
-import 'core/notifications/notification_settings_controller.dart';
 import 'features/notification_settings_screen.dart';
+
+Future<String?> getDeviceToken() async {
+  try {
+    final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+    await _firebaseMessaging.requestPermission();
+    String? token = await _firebaseMessaging.getToken();
+    print('📱 FCM Token: $token');
+    return token;
+  } catch (e) {
+    print('❌ Error getting device token: $e');
+    return null;
+  }
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -66,6 +79,9 @@ void main() async {
   await Firebase.initializeApp();
 
   await Hive.initFlutter();
+
+  String token = await getDeviceToken() ?? '';
+  Logger().i(token);
 
   tz.initializeTimeZones();
 
@@ -77,14 +93,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Notification System Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        useMaterial3: true,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
       routes: {
         '/': (context) => const HomeScreen(),
         '/inbox': (context) => const NotificationInbox(),
-        '/notification_settings': (context) => const NotificationSettingsScreen(),
+        '/notification_settings':
+            (context) => const NotificationSettingsScreen(),
       },
       home: Builder(
         builder: (context) {
@@ -103,9 +117,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-      ),
+      appBar: AppBar(title: const Text('Home')),
       body: Center(
         child: ElevatedButton(
           onPressed: () => Navigator.of(context).pushNamed('/inbox'),

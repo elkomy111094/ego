@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "218905853651",
+    "project_id": "ego-6ceed",
+    "storage_bucket": "ego-6ceed.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:218905853651:android:4ca2ce3963cc8b35b39e26",
+        "android_client_info": {
+          "package_name": "com.example.ego"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjpx9sEG9KI6YQyiHapvbQSXN6FlDT3Sk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
